@@ -1,0 +1,19 @@
+{
+   "name": "studiothick/silverstripe-srcset",
+   "description": "Adds srcset support to SilverStripe 3.0's Image object",
+   "type": "silverstripe-module",
+   "homepage": "http://github.com/StudioThick/silverstripe-srcset",
+   "keywords": ["silverstripe", "image", "srcset"],
+   "license": "MIT",
+   "authors": [
+        { "name": "Tom McLean", "email": "tom.mclean@studiothick.com" }
+    ],
+   "support": { 
+        "issues": "http://github.com/StudioThick/silverstripe-srcset/issues"
+   },
+   "require": { 
+        "silverstripe/framework": "^3.1",
+        "composer/installers": "*"
+   },
+   "extra": { }
+}
