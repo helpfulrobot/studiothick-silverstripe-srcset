@@ -2,7 +2,15 @@
 
 class ImageSrcSetExtension extends DataExtension
 {
-    function SrcSetAttribute() {
+    /**
+     * @config
+     */
+    private static $target_sizes = array(
+                300, 800, 1024, 1280, 1600, 1920, 2560
+            );
+
+
+    function SrcSet() {
         $img = $this->owner;
         if($img->exists()) {
             $url = $img->getURL();
@@ -15,29 +23,21 @@ class ImageSrcSetExtension extends DataExtension
             };
 
             // generate some size options for this display
+            $targets = Config::inst()->get('ImageSrcSetExtension', 'target_sizes');
             $sizes = array();
-            for($i = 0; $i < 3; ++$i) {
-                $w = $basew / ($i + 1);
+            for($i = 0; $i < sizeof($targets); ++$i) {
+                $w = $targets[$i];
                 if($w < $basew) {
                     $sizes[] = $getsize($w);
                 }
             }
 
+            // add the full size
             $sizes[] = "$url {$basew}w";
 
-            $srcs = implode(", ", $sizes);
-        }
-    }
-
-    function SrcSet() {
-        $img = $this->owner;
-
-        if($this->owner->exists()) {
-            $url = $img->getURL();
-            $srcs = $this->SrcSetAttribute();
-            return "<img src='$url' srcset='$srcs' />";
+            return implode(", ", $sizes);
         } else {
-            return null;
+            return '';       
         }
     }
 }
