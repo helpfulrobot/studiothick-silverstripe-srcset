@@ -18,7 +18,7 @@ class ImageSrcSetExtension extends DataExtension
 
             $getsize = function($w) use ($img) {
                 $w = floor($w);
-                $url = $img->ScaleWidth($w)->getURL();
+                $url = $img->SetWidth($w)->getURL();
                 return "$url {$w}w";
             };
 
