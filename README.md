@@ -21,6 +21,6 @@ manually-written `img` tag.
 Example:
 
 ```html
-<img src="$HeaderImage.URL" srcset="$HeaderImage.SrcSetAttribute" alt="$HeaderImage.Title" />
+<img src="$HeaderImage.URL" srcset="$HeaderImage.SrcSet" alt="$HeaderImage.Title" />
 ```
 
