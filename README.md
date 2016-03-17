@@ -1,10 +1,13 @@
 # SilverStripe Image SrcSet extension
 
+This module is a work in progress. Bug reports or feature requests welcome.
+
 This module adds srcset functionality to Image objects, allowing one to save on bandwidth
 when serving high-resolution images to browsers on low-resolution devices.
 
-Calling `SrcSet` on an image in a template will automatically generate multiple sizes of that image (just using `Resize`) and return an `img` tag with the `srcset` attribute populated with
-those smaller alternatives.
+Calling `SrcSet` on an image in a template will automatically generate multiple sizes of that 
+image (just using `Resize`) and return a string of corresponding URLs and widths to be used
+in an `img` tag's `srcset` attribute.
 
 ## Installation
 
@@ -12,24 +15,12 @@ Install via `composer require studiothick/silverstripe-srcset`.
 
 ## Usage
 
-While the functions provided by ImageSrcSetExtension can be called within php, they're meant
-for use in templates.
+`SrcSet` only returns a string to use in the `srcset` attribute, to be included in a
+manually-written `img` tag. 
 
-### `SrcSet`
-
-`SrcSet` returns a full `img` tag with populated `src` and `srcset` attributes.
+Example:
 
 ```html
-$HeaderImage.SrcSet
-<h1>$Title</h1>
-```
-
-### `SrcSetAttribute`
-
-`SrcSetAttribute` only returns the contents of the `srcset` attribute, to be included in a manually-written `img` tag. This is for when you need to set other attributes.
-
-```html
-<img src="$HeaderImage.URL" srcset="$HeaderImage.SrcSetAttribute" alt="$Title" />
-<h1>$Title</h1>
+<img src="$HeaderImage.URL" srcset="$HeaderImage.SrcSetAttribute" alt="$HeaderImage.Title" />
 ```
 
